@@ -1,0 +1,680 @@
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+/* 修改颜色方案为中性温暖风格 */
+:root {
+  --primary-color: #8B4513; /* 深棕色 */
+  --secondary-color: #D2B48C; /* 棕褐色 */
+  --accent-color: #556B2F; /* 深橄榄绿 */
+  --background-color: #F5F5DC; /* 米色背景 */
+  --text-color: #4A4A4A; /* 深灰色文字 */
+  --shadow-color: rgba(139, 69, 19, 0.1);
+  --border-color: #D2B48C;
+}
+
+body {
+  width: 520px; /* 从480px加宽到520px */
+  min-height: 680px; /* 从600px加高到680px */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  max-width: 100%;
+  font-family: 'Nunito', sans-serif;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="%23FFD3B6" opacity="0.1"><path d="M12 2C9.79 2 8 3.79 8 6s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-6 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm12 0c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>');
+}
+
+/* 宠物主题装饰元素 */
+.container:before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%23FFB74D"><path d="M256 224c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 240c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96zm46.7-234.3c-7.9 4.3-16.8 6.6-26 6.6-14.3 0-26.8-5.6-36.3-15.1-9.5-9.5-15.1-22-15.1-36.3 0-9.2 2.3-18.1 6.6-26-25.9 3.1-48.4 17.1-64 38.1 7.9 4.3 16.8 6.6 26 6.6 14.3 0 26.8-5.6 36.3-15.1 9.5-9.5 15.1-22 15.1-36.3 0-9.2-2.3-18.1-6.6-26 25.9 3.1 48.4 17.1 64 38.1z"/></svg>');
+  opacity: 0.2;
+  z-index: -1;
+  transform: rotate(15deg);
+}
+
+.container {
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 头部样式 */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.logo img {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.logo h1 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  white-space: nowrap;
+  overflow: visible;
+  width: 100%;
+  max-width: 300px;
+  font-weight: 700;
+  text-shadow: 1px 1px 0 #FFE0B2;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+  margin: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--background-color);
+  padding: 8px 0;
+}
+
+.btn {
+  min-height: 48px; /* 增加按钮高度 */
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  background: linear-gradient(145deg, var(--secondary-color), var(--primary-color));
+}
+
+/* 主要按钮 */
+.btn.primary {
+  background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* 次要按钮 */
+.btn.secondary {
+  background: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+/* 日程项中的编辑和删除按钮 */
+.schedule-actions .btn {
+  flex: 1;
+  min-height: 36px;
+  padding: 8px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* 危险按钮 */
+.btn.danger {
+  background: linear-gradient(145deg, #ff6b6b, #ff4d4d);
+  color: white;
+  border: none;
+}
+
+/* 日程项中的开关样式调整 */
+.schedule-actions .switch {
+  align-self: center;
+  margin: 0 8px;
+  transform: scale(0.9);
+}
+
+/* 可点击元素的鼠标样式 */
+button, .switch, .apply-template, .logo, .edit-schedule, .delete-schedule, input[type="checkbox"] {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%238B4513"><path d="M12 2C9.79 2 8 3.79 8 6s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-6 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm12 0c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>'), pointer;
+}
+
+/* 按钮悬停效果 */
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="%238B4513"><path d="M12 2C9.79 2 8 3.79 8 6s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm-6 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm12 0c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>'), auto;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.temporary-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #FF6B6B;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-weight: 600;
+  animation: fadeIn 0.3s ease;
+}
+
+.website-link {
+  margin-top: 24px;
+  padding: 16px;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.website-link p {
+  color: var(--text-color);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.website-link-text {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.website-link-text:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.schedule-container {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  min-height: 300px; /* 增加容器最小高度 */
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  text-align: center;
+  width: 100%;
+  position: relative;
+  padding-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+  border-radius: 3px;
+}
+
+/* 日程列表 */
+.schedule-item {
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  background: var(--background-color);
+  box-shadow: 0 2px 10px var(--shadow-color);
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--primary-color);
+}
+
+.schedule-item.inactive {
+  opacity: 0.6;
+}
+
+.schedule-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.schedule-item:before {
+  content: '🐾';
+  position: absolute;
+  left: -5px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.schedule-item:hover:before {
+  left: 5px;
+  opacity: 1;
+}
+
+.schedule-item:last-child {
+  border-bottom: none;
+}
+
+.schedule-info {
+  flex: 1;
+}
+
+.schedule-time {
+  font-weight: bold;
+  color: #FF6B6B; /* 可爱粉红色 */
+  background-color: #FFECB3;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+.schedule-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 12px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 20px;
+  color: #9E9E9E;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="%23FFD3B6" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: center 10px;
+  background-size: 60px;
+  padding-top: 70px;
+}
+
+/* 表单样式 */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* 星期选择器样式 */
+.weekday-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.weekday-option {
+  display: inline-flex;
+  align-items: center;
+  background-color: #FFECB3;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.weekday-option:hover {
+  background-color: #FFD3B6;
+}
+
+.weekday-option input[type="checkbox"] {
+  width: auto;
+  margin-right: 5px;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #FF6B6B;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+}
+
+textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+/* 表单操作按钮 */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.form-actions .btn {
+  min-width: 80px;
+}
+
+/* 模板卡片 */
+.templates-container {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 18px;
+  min-height: 400px; /* 增加模板容器最小高度 */
+}
+
+.template-item {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #FFF8E1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #FF6B6B;
+}
+
+.template-item h3 {
+  font-size: 1.2rem;
+  color: #FF6B6B;
+  margin-bottom: 5px;
+}
+
+.template-item p {
+  font-size: 0.9rem;
+  color: #757575;
+  margin-bottom: 10px;
+}
+
+.template-item button {
+  background-color: #FF6B6B;
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.template-item button:hover {
+  background-color: #FF8A80;
+}
+
+/* 设置页面 */
+.settings-container {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13);
+  border: 2px solid #BBDEFB;
+  margin-top: 18px;
+  z-index: 2;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.setting-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 18px 0 0 0;
+}
+
+/* 设置页面按钮 */
+.settings-container .btn {
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* 返回按钮 */
+#back-from-templates,
+#back-from-settings {
+  margin-top: 16px;
+  width: 100%;
+}
+
+/* 开关样式 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+}
+
+/* 日程项中的开关样式 */
+.schedule-actions .switch {
+  margin-right: 5px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #A5D6A7;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #A5D6A7;
+}
+
+input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+/* 圆形滑块 */
+.slider.round {
+  border-radius: 22px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #FF6B6B; /* 可爱粉红色 */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* 品牌链接 */
+.branding {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #FF6B6B; /* 可爱粉红色 */
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.brand-link:hover {
+  transform: scale(1.05);
+}
+
+.brand-link img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+/* 隐藏元素 */
+.hidden {
+  display: none;
+}
+
+/* 动画效果 */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.logo img {
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.logo img:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* 可爱的滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8F0;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFB74D;
+  border-radius: 10px;
+  border: 2px solid #FFF8F0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9800;
+}
+
+/* 响应式调整 */
+@media (max-width: 400px) {
+  body {
+    width: 100%;
+    min-width: 320px;
+  }
+  
+  .container {
+    padding: 10px;
+  }
+  
+  .templates-container {
+    grid-template-columns: 1fr;
+  }
+   
+  .logo h1 {
+    font-size: 1.2rem;
+    max-width: 220px;
+  }
+   
+  .btn {
+    padding: 8px 5px;
+    font-size: 0.85rem;
+    height: 42px;
+  }
+  
+  .schedule-container {
+    padding: 10px;
+  }
+  
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+}
+
+/* 清除按钮样式 */
+.clear-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clear-button:hover {
+  background-color: var(--secondary-color);
+}

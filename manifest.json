@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Pet Care Assistant",
+  "version": "1.0",
+  "description": "A helpful assistant for pet care reminders",
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications"
+  ],
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "web_accessible_resources": [{"resources": ["images/icon128.png", "images/icon16.png", "images/icon48.png"], "matches": ["<all_urls>"]}]
+}
